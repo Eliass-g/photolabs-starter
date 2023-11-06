@@ -20,21 +20,23 @@ const PhotoDetailsModal = ({
       >
         <img src={closeSymbol} alt="close symbol" />
       </button>
-      <div>
-        <div>
-          <PhotoFavButton
-            id={onPhotoSelect.id}
-          />
-          <img
-            className="photo-details-modal__images"
-            src={onPhotoSelect.largeImg}
-            /* onClick={handleClick} */
-          />
-        </div>
+      <div className="photo-details-modal__images">
+        <PhotoFavButton id={onPhotoSelect.id} />
+        <img
+          className="photo-details-modal__image"
+          src={onPhotoSelect.largeImg}
+          /* onClick={handleClick} */
+        />
+
         <div className="photo-details-modal__photographer-details">
-          <img className="photo-details-modal__photographer-profile" src={onPhotoSelect.profile} />
+          <img
+            className="photo-details-modal__photographer-profile"
+            src={onPhotoSelect.profile}
+          />
           <div>
-            <div className="photo-details-modal__photographer-info">{onPhotoSelect.name}</div>
+            <div className="photo-details-modal__photographer-info">
+              {onPhotoSelect.name}
+            </div>
             <div className="photo-details-modal__photographer-info photo-details-modal__photographer-location">
               {onPhotoSelect.city}, {onPhotoSelect.country}
             </div>
