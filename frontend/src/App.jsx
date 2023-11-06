@@ -9,15 +9,17 @@ import topics from "mocks/topics";
 // Note: Rendering a single component to build components in isolation
 const App = () => {
   const [openModal, setOpenModal] = useState(false);
+  const [onPhotoSelect, setPhotoSelected] = useState({});
   return (
     <div className="App">
       <HomeRoute
         photos={photos}
         topics={topics}
-        modal={<PhotoDetailsModal setOpenModal={setOpenModal}/>}
         openModal={openModal}
         setOpenModal={setOpenModal}
+        setPhotoSelected={setPhotoSelected}
       />
+      {openModal && <PhotoDetailsModal onPhotoSelect={onPhotoSelect} setPhotoSelected={setPhotoSelected} setOpenModal={setOpenModal}/>}
     </div>
   );
 };

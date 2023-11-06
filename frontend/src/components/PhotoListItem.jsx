@@ -1,14 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, Fragment } from "react";
 import PhotoFavButton from "./PhotoFavButton";
 import "../styles/PhotoListItem.scss";
 
 const PhotoListItem = (props) => {
   const handleClick = function () {
     props.setOpenModal(true);
+    props.setPhotoSelected({
+      id: props.id,
+      name: props.user.name,
+      city: props.location.city,
+      country: props.location.country,
+      profile: props.user.profile,
+      largeImg: props.urls.full,
+      regImg: props.urls.regular
+    });
   };
   return (
     <div className="photo-list__item">
-      {props.openModal && props.modal}
       <div>
         <PhotoFavButton
           id={props.id}

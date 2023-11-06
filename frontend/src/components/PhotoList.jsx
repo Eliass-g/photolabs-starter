@@ -3,7 +3,7 @@ import React from "react";
 import PhotoListItem from "./PhotoListItem";
 import "../styles/PhotoList.scss";
 
-const PhotoList = ({ photos, favs, setFavs, setExist, modal, openModal, setOpenModal }) => {
+const PhotoList = ({ photos, favs, setFavs, setExist, modal, openModal, setOpenModal, setPhotoSelected }) => {
   const photolist = photos.map((data) => {
     return (
       <PhotoListItem
@@ -15,6 +15,7 @@ const PhotoList = ({ photos, favs, setFavs, setExist, modal, openModal, setOpenM
         modal={modal}
         openModal={openModal}
         setOpenModal={setOpenModal}
+        setPhotoSelected={setPhotoSelected}
       />
     );
   });

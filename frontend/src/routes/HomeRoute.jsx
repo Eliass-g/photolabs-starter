@@ -4,7 +4,7 @@ import PhotoList from "../components/PhotoList";
 import TopNavigationBar from "../components/TopNavigationBar";
 import "../styles/HomeRoute.scss";
 
-const HomeRoute = ({ photos, topics, modal, openModal, setOpenModal }) => {
+const HomeRoute = ({ photos, topics, modal, openModal, setOpenModal, setPhotoSelected}) => {
   const [favs, setFavs] = useState([]);
   const [isFavPhotoExist, setFavPhotoExist] = useState(false);
 
@@ -27,6 +27,7 @@ const HomeRoute = ({ photos, topics, modal, openModal, setOpenModal }) => {
         modal={modal}
         openModal={openModal}
         setOpenModal={setOpenModal}
+        setPhotoSelected={setPhotoSelected}
       />
     </div>
   );
