@@ -6,8 +6,7 @@ import "../styles/PhotoList.scss";
 const PhotoList = ({
   photos,
   favs,
-  updateToFavPhotoIds,
-  onPhotoSelect
+  dispatch
 }) => {
   const photolist = photos.map((data) => {
     return (
@@ -15,8 +14,7 @@ const PhotoList = ({
         key={data.id}
         {...data}
         favs={favs}
-        updateToFavPhotoIds={updateToFavPhotoIds}
-        onPhotoSelect={onPhotoSelect}
+        dispatch={dispatch}
       />
     );
   });

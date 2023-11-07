@@ -7,9 +7,8 @@ import "../styles/HomeRoute.scss";
 const HomeRoute = ({
   photos,
   topics,
-  onPhotoSelect,
-  favs,
-  updateToFavPhotoIds,
+  dispatch,
+  favs
 }) => {
   return (
     <div className="home-route">
@@ -17,8 +16,7 @@ const HomeRoute = ({
       <PhotoList
         photos={photos}
         favs={favs}
-        updateToFavPhotoIds={updateToFavPhotoIds}
-        onPhotoSelect={onPhotoSelect}
+        dispatch={dispatch}
       />
     </div>
   );

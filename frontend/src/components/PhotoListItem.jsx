@@ -2,13 +2,23 @@ import React from "react";
 import PhotoFavButton from "./PhotoFavButton";
 import "../styles/PhotoListItem.scss";
 
-const PhotoListItem = ({id, user, location, urls, onPhotoSelect, updateToFavPhotoIds, favs}) => {
+const PhotoListItem = ({
+  id,
+  user,
+  location,
+  urls,
+  dispatch,
+  favs,
+}) => {
   const handleClick = function () {
-    onPhotoSelect({
-      id,
-      user,
-      location,
-      urls
+    dispatch({
+      type: "SELECT_PHOTO",
+      value: {
+        id,
+        user,
+        location,
+        urls,
+      },
     });
   };
   return (
@@ -17,7 +27,7 @@ const PhotoListItem = ({id, user, location, urls, onPhotoSelect, updateToFavPhot
         <PhotoFavButton
           id={id}
           favs={favs}
-          updateToFavPhotoIds={updateToFavPhotoIds}
+          dispatch={dispatch}
         />
         <img
           className="photo-list__image"

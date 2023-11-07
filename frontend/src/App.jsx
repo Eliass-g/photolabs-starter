@@ -8,31 +8,22 @@ import useApplicationData from "hooks/useApplicationData";
 
 // Note: Rendering a single component to build components in isolation
 const App = () => {
-  const {
-    state,
-    onPhotoSelect,
-    updateToFavPhotoIds,
-    onLoadTopic,
-    onClosePhotoDetailsModal,
-  } = useApplicationData();
+  const { state, dispatch, onLoadTopic } = useApplicationData();
 
   return (
     <div className="App">
       <HomeRoute
         favs={state.favs}
-        updateToFavPhotoIds={updateToFavPhotoIds}
         photos={photos}
         topics={topics}
-        onPhotoSelect={onPhotoSelect}
+        dispatch={dispatch}
       />
       {state.selectedPhoto && (
         <PhotoDetailsModal
-          onPhotoSelect={onPhotoSelect}
+          dispatch={dispatch}
           photos={photos}
           favs={state.favs}
-          updateToFavPhotoIds={updateToFavPhotoIds}
           selectedPhoto={state.selectedPhoto}
-          onClosePhotoDetailsModal={onClosePhotoDetailsModal}
         />
       )}
     </div>

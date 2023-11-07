@@ -7,21 +7,22 @@ import PhotoList from "components/PhotoList";
 const PhotoDetailsModal = ({
   photos,
   favs,
-  updateToFavPhotoIds,
-  onPhotoSelect,
+  dispatch,
   selectedPhoto,
-  onClosePhotoDetailsModal,
 }) => {
+  function handleClick() {
+    dispatch({ type: "CLOSE_MODAL" });
+  }
   return (
     <div className="photo-details-modal">
       <button
         className="photo-details-modal__close-button"
-        onClick={onClosePhotoDetailsModal}
+        onClick={handleClick}
       >
         <img src={closeSymbol} alt="close symbol" />
       </button>
       <div className="photo-details-modal__images">
-        <PhotoFavButton id={selectedPhoto.id} favs={favs} updateToFavPhotoIds={updateToFavPhotoIds} />
+        <PhotoFavButton id={selectedPhoto.id} favs={favs} dispatch={dispatch} />
         <img
           className="photo-details-modal__image"
           src={selectedPhoto.urls.full}
@@ -48,8 +49,7 @@ const PhotoDetailsModal = ({
         <PhotoList
           photos={Object.values(photos[selectedPhoto.id].similar_photos)}
           favs={favs}
-          updateToFavPhotoIds={updateToFavPhotoIds}
-          onPhotoSelect={onPhotoSelect}
+          dispatch={dispatch}
         />
       </div>
     </div>
