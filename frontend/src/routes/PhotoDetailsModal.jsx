@@ -2,46 +2,55 @@ import React from "react";
 import PhotoFavButton from "components/PhotoFavButton";
 import "../styles/PhotoDetailsModal.scss";
 import closeSymbol from "../assets/closeSymbol.svg";
+import PhotoList from "components/PhotoList";
 
 const PhotoDetailsModal = ({
+  photos,
+  favs,
+  updateToFavPhotoIds,
   onPhotoSelect,
-  setPhotoSelected,
-  setOpenModal,
+  selectedPhoto,
+  onClosePhotoDetailsModal,
 }) => {
-  const handleClick = function () {
-    setOpenModal(false);
-    setPhotoSelected({});
-  };
   return (
     <div className="photo-details-modal">
       <button
         className="photo-details-modal__close-button"
-        onClick={handleClick}
+        onClick={onClosePhotoDetailsModal}
       >
         <img src={closeSymbol} alt="close symbol" />
       </button>
       <div className="photo-details-modal__images">
-        <PhotoFavButton id={onPhotoSelect.id} />
+        <PhotoFavButton id={selectedPhoto.id} favs={favs} updateToFavPhotoIds={updateToFavPhotoIds} />
         <img
           className="photo-details-modal__image"
-          src={onPhotoSelect.largeImg}
-          /* onClick={handleClick} */
+          src={selectedPhoto.urls.full}
         />
 
         <div className="photo-details-modal__photographer-details">
           <img
             className="photo-details-modal__photographer-profile"
-            src={onPhotoSelect.profile}
+            src={selectedPhoto.user.profile}
           />
           <div>
             <div className="photo-details-modal__photographer-info">
-              {onPhotoSelect.name}
+              {selectedPhoto.user.name}
             </div>
             <div className="photo-details-modal__photographer-info photo-details-modal__photographer-location">
-              {onPhotoSelect.city}, {onPhotoSelect.country}
+              {selectedPhoto.location.city}, {selectedPhoto.location.country}
             </div>
           </div>
         </div>
+      </div>
+
+      <div className="photo-details-modal__images">
+        <header className="photo-details-modal__header">Similar Photos</header>
+        <PhotoList
+          photos={Object.values(photos[selectedPhoto.id].similar_photos)}
+          favs={favs}
+          updateToFavPhotoIds={updateToFavPhotoIds}
+          onPhotoSelect={onPhotoSelect}
+        />
       </div>
     </div>
   );

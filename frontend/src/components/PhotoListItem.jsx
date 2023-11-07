@@ -1,41 +1,36 @@
-import React, { useState, Fragment } from "react";
+import React from "react";
 import PhotoFavButton from "./PhotoFavButton";
 import "../styles/PhotoListItem.scss";
 
-const PhotoListItem = (props) => {
+const PhotoListItem = ({id, user, location, urls, onPhotoSelect, updateToFavPhotoIds, favs}) => {
   const handleClick = function () {
-    props.setOpenModal(true);
-    props.setPhotoSelected({
-      id: props.id,
-      name: props.user.name,
-      city: props.location.city,
-      country: props.location.country,
-      profile: props.user.profile,
-      largeImg: props.urls.full,
-      regImg: props.urls.regular
+    onPhotoSelect({
+      id,
+      user,
+      location,
+      urls
     });
   };
   return (
     <div className="photo-list__item">
       <div>
         <PhotoFavButton
-          id={props.id}
-          favs={props.favs}
-          setFavs={props.setFavs}
-          setExist={props.setExist}
+          id={id}
+          favs={favs}
+          updateToFavPhotoIds={updateToFavPhotoIds}
         />
         <img
           className="photo-list__image"
-          src={props.urls.regular}
+          src={urls.regular}
           onClick={handleClick}
         />
       </div>
       <div className="photo-list__user-details">
-        <img className="photo-list__user-profile" src={props.user.profile} />
+        <img className="photo-list__user-profile" src={user.profile} />
         <div>
-          <div className="photo-list__user-info">{props.user.name}</div>
+          <div className="photo-list__user-info">{user.name}</div>
           <div className="photo-list__user-info photo-list__user-location">
-            {props.location.city}, {props.location.country}
+            {location.city}, {location.country}
           </div>
         </div>
       </div>
