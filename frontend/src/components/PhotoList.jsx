@@ -13,6 +13,7 @@ const PhotoList = ({
       <PhotoListItem
         key={data.id}
         {...data}
+        selectedPhoto={data}
         favs={favs}
         dispatch={dispatch}
       />

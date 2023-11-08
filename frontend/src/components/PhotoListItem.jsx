@@ -9,6 +9,7 @@ const PhotoListItem = ({
   urls,
   dispatch,
   favs,
+  selectedPhoto
 }) => {
   const handleClick = function () {
     dispatch({
@@ -21,11 +22,12 @@ const PhotoListItem = ({
       },
     });
   };
+
   return (
     <div className="photo-list__item">
       <div>
         <PhotoFavButton
-          id={id}
+          selectedPhoto={selectedPhoto}
           favs={favs}
           dispatch={dispatch}
         />

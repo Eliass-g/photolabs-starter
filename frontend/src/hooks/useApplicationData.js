@@ -3,6 +3,8 @@ import { useReducer, useEffect } from "react";
 const useApplicationData = () => {
   function reducer(state, action) {
     switch (action.type) {
+      case "OPEN_FAVS":
+        return {...state, openFavs: true}
       case "GET_PHOTOS_BY_TOPICS":
         return { ...state, photoData: action.value };
       case "SET_TOPIC_ID":
@@ -16,13 +18,13 @@ const useApplicationData = () => {
       case "CLOSE_MODAL":
         return { ...state, selectedPhoto: null };
       case "UPDATE_FAV_PHOTO": {
-        if (state.favs.includes(action.value["id"])) {
+        if (state.favs.find((fav) => fav.id === action.value.id)) {
           return {
             ...state,
-            favs: [...state.favs.filter((item) => item !== action.value["id"])],
+            favs: [...state.favs.filter((item) => item["id"] !== action.value['id'])],
           };
         } else {
-          return { ...state, favs: [...state.favs, action.value["id"]] };
+          return { ...state, favs: [...state.favs, action.value] };
         }
       }
     }
@@ -31,10 +33,10 @@ const useApplicationData = () => {
   const initialState = {
     selectedPhoto: null,
     favs: [],
-    isFavPhotoExist: false,
     photoData: [],
     topicData: [],
     topicId: null,
+    openFavs: false
   };
 
   useEffect(() => {

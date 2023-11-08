@@ -4,12 +4,7 @@ import "../styles/PhotoDetailsModal.scss";
 import closeSymbol from "../assets/closeSymbol.svg";
 import PhotoList from "components/PhotoList";
 
-const PhotoDetailsModal = ({
-  photos,
-  favs,
-  dispatch,
-  selectedPhoto,
-}) => {
+const PhotoDetailsModal = ({ photos, favs, dispatch, selectedPhoto }) => {
   function handleClick() {
     dispatch({ type: "CLOSE_MODAL" });
   }
@@ -22,7 +17,11 @@ const PhotoDetailsModal = ({
         <img src={closeSymbol} alt="close symbol" />
       </button>
       <div className="photo-details-modal__images">
-        <PhotoFavButton id={selectedPhoto.id} favs={favs} dispatch={dispatch} />
+        <PhotoFavButton
+          selectedPhoto={selectedPhoto}
+          favs={favs}
+          dispatch={dispatch}
+        />
         <img
           className="photo-details-modal__image"
           src={selectedPhoto.urls.full}
@@ -47,7 +46,9 @@ const PhotoDetailsModal = ({
       <div className="photo-details-modal__images">
         <header className="photo-details-modal__header">Similar Photos</header>
         <PhotoList
-          photos={Object.values(photos[selectedPhoto.id].similar_photos)}
+          photos={Object.values(
+            photos.find((photo) => photo.id === selectedPhoto.id).similar_photos
+          )}
           favs={favs}
           dispatch={dispatch}
         />

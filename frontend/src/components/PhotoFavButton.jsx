@@ -3,14 +3,15 @@ import React, { useCallback, useState } from "react";
 import FavIcon from "./FavIcon";
 import "../styles/PhotoFavButton.scss";
 
-function PhotoFavButton({ id, favs, dispatch }) {
+function PhotoFavButton({ selectedPhoto, favs, dispatch }) {
+  
   return (
     <div
       className="photo-list__fav-icon"
-      onClick={() => dispatch({ type: "UPDATE_FAV_PHOTO", value: { id } })}
+      onClick={() => dispatch({ type: "UPDATE_FAV_PHOTO", value:  selectedPhoto  })}
     >
       <div className="photo-list__fav-icon-svg">
-        <FavIcon selected={favs.includes(id)} />
+        <FavIcon selected={favs.find((fav) => fav.id === selectedPhoto.id)} />
       </div>
     </div>
   );

@@ -4,20 +4,15 @@ import PhotoList from "../components/PhotoList";
 import TopNavigationBar from "../components/TopNavigationBar";
 import "../styles/HomeRoute.scss";
 
-const HomeRoute = ({
-  photos,
-  topics,
-  dispatch,
-  favs
-}) => {
+const HomeRoute = ({ photos, topics, dispatch, favs }) => {
   return (
     <div className="home-route">
-      <TopNavigationBar topics={topics} isFavPhotoExist={favs.length > 0} dispatch={dispatch} />
-      <PhotoList
-        photos={photos}
-        favs={favs}
+      <TopNavigationBar
+        topics={topics}
+        isFavPhotoExist={favs.length > 0}
         dispatch={dispatch}
       />
+      <PhotoList photos={photos} favs={favs} dispatch={dispatch} />
     </div>
   );
 };
