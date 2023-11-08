@@ -22,3 +22,5 @@ Read `backend/readme` for further setup details.
 cd backend
 npm start
 ```
+!["PhotoLabs Homepage](https://github.com/Eliass-g/photolabs-starter/blob/main/docs/photo-home.png?raw=true)
+!["PhotoLabs Modal](https://github.com/Eliass-g/photolabs-starter/blob/main/docs/photo-modal.png?raw=true)
