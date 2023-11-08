@@ -3,6 +3,10 @@ import { useReducer, useEffect } from "react";
 const useApplicationData = () => {
   function reducer(state, action) {
     switch (action.type) {
+      case "GET_PHOTOS_BY_TOPICS":
+        return { ...state, photoData: action.value };
+      case "SET_TOPIC_ID":
+        return { ...state, topicId: action.value };
       case "SET_PHOTO_DATA":
         return { ...state, photoData: action.value };
       case "SET_TOPIC_DATA":
@@ -30,6 +34,7 @@ const useApplicationData = () => {
     isFavPhotoExist: false,
     photoData: [],
     topicData: [],
+    topicId: null,
   };
 
   useEffect(() => {
@@ -47,6 +52,16 @@ const useApplicationData = () => {
   }, []);
 
   const [state, dispatch] = useReducer(reducer, initialState);
+
+  useEffect(() => {
+    if (state.topicId !== null) {
+      fetch(`/api/topics/photos/${state.topicId}`)
+        .then((res) => res.json())
+        .then((data) => {
+          dispatch({ type: "GET_PHOTOS_BY_TOPICS", value: data });
+        });
+    }
+  }, [state.topicId]);
 
   return {
     state,

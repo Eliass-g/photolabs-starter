@@ -12,7 +12,7 @@ const HomeRoute = ({
 }) => {
   return (
     <div className="home-route">
-      <TopNavigationBar topics={topics} isFavPhotoExist={favs.length > 0} />
+      <TopNavigationBar topics={topics} isFavPhotoExist={favs.length > 0} dispatch={dispatch} />
       <PhotoList
         photos={photos}
         favs={favs}
