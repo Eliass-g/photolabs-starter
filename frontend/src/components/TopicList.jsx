@@ -3,6 +3,7 @@ import React from "react";
 import "../styles/TopicList.scss";
 import TopicListItem from "./TopicListItem";
 
+//lists out topics
 const TopicList = ({topics, dispatch}) => {
   const topiclist = topics.map((data) => {
     return (

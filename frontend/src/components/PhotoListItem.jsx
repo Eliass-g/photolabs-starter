@@ -2,6 +2,7 @@ import React from "react";
 import PhotoFavButton from "./PhotoFavButton";
 import "../styles/PhotoListItem.scss";
 
+//each individual photo along with its functionality
 const PhotoListItem = ({
   id,
   user,

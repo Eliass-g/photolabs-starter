@@ -1,10 +1,11 @@
 import { useReducer, useEffect } from "react";
 
+//sets state based on dispatch command that was invoked
 const useApplicationData = () => {
   function reducer(state, action) {
     switch (action.type) {
       case "OPEN_FAVS":
-        return {...state, openFavs: true}
+        return { ...state, openFavs: true };
       case "GET_PHOTOS_BY_TOPICS":
         return { ...state, photoData: action.value, openFavs: false };
       case "SET_TOPIC_ID":
@@ -21,7 +22,9 @@ const useApplicationData = () => {
         if (state.favs.find((fav) => fav.id === action.value.id)) {
           return {
             ...state,
-            favs: [...state.favs.filter((item) => item["id"] !== action.value['id'])],
+            favs: [
+              ...state.favs.filter((item) => item["id"] !== action.value["id"]),
+            ],
           };
         } else {
           return { ...state, favs: [...state.favs, action.value] };
@@ -30,15 +33,17 @@ const useApplicationData = () => {
     }
   }
 
+  //initial state values
   const initialState = {
     selectedPhoto: null,
     favs: [],
     photoData: [],
     topicData: [],
     topicId: null,
-    openFavs: false
+    openFavs: false,
   };
 
+  //access data from server
   useEffect(() => {
     fetch(`/api/photos`)
       .then((res) => res.json())

@@ -4,6 +4,7 @@ import "../styles/PhotoDetailsModal.scss";
 import closeSymbol from "../assets/closeSymbol.svg";
 import PhotoList from "components/PhotoList";
 
+//displays the modal of the photo once clicked
 const PhotoDetailsModal = ({ photos, favs, dispatch, selectedPhoto }) => {
   function handleClick() {
     dispatch({ type: "CLOSE_MODAL" });

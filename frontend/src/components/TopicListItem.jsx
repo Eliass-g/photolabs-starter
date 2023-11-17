@@ -2,6 +2,7 @@ import React from "react";
 
 import "../styles/TopicListItem.scss";
 
+//each individual topic along with functionality to view them
 const TopicListItem = ({ id, title, dispatch }) => {
   return (
     <div

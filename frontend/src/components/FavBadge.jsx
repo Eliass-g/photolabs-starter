@@ -3,6 +3,7 @@ import FavIcon from './FavIcon';
 
 import '../styles/FavBadge.scss';
 
+//displays favourite notification and enables user request to view favourited photos
 const FavBadge = ({ isFavPhotoExist, dispatch }) => {
   const handleClick = function () {
     dispatch({ type: 'OPEN_FAVS'})

@@ -3,6 +3,7 @@ import React, { useCallback, useState } from "react";
 import FavIcon from "./FavIcon";
 import "../styles/PhotoFavButton.scss";
 
+//favourite icon for photos, functionality and display
 function PhotoFavButton({ selectedPhoto, favs, dispatch }) {
   
   return (

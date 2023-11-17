@@ -4,6 +4,7 @@ import '../styles/TopNavigationBar.scss'
 import TopicList from './TopicList';
 import FavBadge from './FavBadge';
 
+//displays naviation bar with title, topics and fav icon
 const TopNavigation = ({topics, isFavPhotoExist, dispatch}) => {
   return (
     <div className="top-nav-bar">

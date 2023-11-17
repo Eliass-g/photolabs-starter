@@ -3,6 +3,7 @@ import React from "react";
 import PhotoListItem from "./PhotoListItem";
 import "../styles/PhotoList.scss";
 
+//lists out each photo
 const PhotoList = ({
   photos,
   favs,
