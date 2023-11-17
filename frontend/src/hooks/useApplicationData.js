@@ -6,7 +6,7 @@ const useApplicationData = () => {
       case "OPEN_FAVS":
         return {...state, openFavs: true}
       case "GET_PHOTOS_BY_TOPICS":
-        return { ...state, photoData: action.value };
+        return { ...state, photoData: action.value, openFavs: false };
       case "SET_TOPIC_ID":
         return { ...state, topicId: action.value };
       case "SET_PHOTO_DATA":
